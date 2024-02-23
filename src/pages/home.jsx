@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Sidebar from "../components/SideBar";
+import { Sidebar } from "../components/sidebar";
+import Main from "../components/main";
 
 export default function Home() {
   const [options, setOptions] = useState([
@@ -12,6 +13,10 @@ export default function Home() {
       <div className="grid grid-cols-12 gap-8">
         <div className="col-start-1 col-end-2 h-full fixed top-6">
           <Sidebar options={options} />
+        </div>
+
+        <div className="col-start-2 col-end-8 h-full">
+          <Main />
         </div>
       </div>
     </div>
