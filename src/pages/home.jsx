@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Sidebar } from "../components/sidebar";
 import Menu from "../components/menu";
 import Header from "../components/header";
+import Cart from "../components/cart";
 
 export default function Home() {
   const [options, setOptions] = useState([
@@ -259,6 +260,10 @@ export default function Home() {
           <div className="my-10">
             <Menu menuItems={menuItems} handleTabClick={handleTabClick} />
           </div>
+        </div>
+
+        <div className="col-start-8 col-end-13 fixed top-6 right-40">
+          <Cart />
         </div>
       </div>
     </div>
