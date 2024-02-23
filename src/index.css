@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --foreground-rgb: #252836;
+  --foreground-text: #fff;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground-text);
+  background-color: var(--foreground-rgb);
+}
+
+::-webkit-scrollbar {
+  height: 30px;
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 30px;
+  background: #393c49;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  width: 30px;
+}
