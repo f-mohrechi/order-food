@@ -1,7 +1,21 @@
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, reduceQuantity } from "../../actions/action";
 import Button from "../button";
 
 export default function FoodBox({ foods }) {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+  const foodInCart = cart.find((item) => item.id === foods.id) || {
+    quantity: 0,
+  };
+
+  const handleAddToCart = (foodItem, quantity) => {
+    dispatch(addToCart(foodItem, quantity));
+  };
+
+  const handleReduceQuantity = (foodItem) => {
+    dispatch(reduceQuantity(foodItem));
+  };
   return (
     <div className="bg-dark-200 w-56 px-4 pb-10 rounded-xl flex flex-col items-center relative">
       <div className="absolute -top-14">
@@ -23,10 +37,10 @@ export default function FoodBox({ foods }) {
       </div>
 
       <div className="flex items-center pt-5">
-        <Button text={"-"} />
-        <p className="px-4">0</p>
+        <Button text={"-"} OnClick={() => handleReduceQuantity(foods)} />
+        <p className="px-4">{foodInCart.quantity}</p>
 
-        <Button text={"+"} />
+        <Button text={"+"} OnClick={() => handleAddToCart(foods, 1)} />
       </div>
     </div>
   );
