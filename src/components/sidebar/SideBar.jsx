@@ -1,7 +1,9 @@
 import { useState } from "react";
 import SideItem from "./SideItem";
+import { useSelector } from "react-redux";
 
 export default function Sidebar({ options }) {
+  const cart = useSelector((state) => state.cart);
   const [active, setActive] = useState({});
   const activation = (index) => {
     setActive({ [index]: true });
@@ -25,7 +27,7 @@ export default function Sidebar({ options }) {
             />
 
             <div className="absolute -top-3 -right-3 w-5 h-5  bg-primary-100 grayscale rounded-full flex justify-center items-center">
-              <p className="text-xs">0</p>
+              <p className="text-xs">{cart.length}</p>
             </div>
           </div>
           {options.map((item, index) => {

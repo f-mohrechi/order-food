@@ -201,7 +201,7 @@ export default function Home() {
       selected: false,
       items: [
         {
-          id: 1,
+          id: 21,
           name: "Spicy seasoned seafood noodles",
           img: "/img/food-1.svg",
           price: 2.29,
@@ -209,7 +209,7 @@ export default function Home() {
           numbers: "20",
         },
         {
-          id: 2,
+          id: 22,
           name: "Salted Pasta with mushroom sauce",
           img: "/img/food-2.svg",
           price: 2.69,
@@ -217,7 +217,7 @@ export default function Home() {
           numbers: "11",
         },
         {
-          id: 3,
+          id: 23,
           name: "Beef dumpling in hot and sour soup",
           img: "/img/food-3.svg",
           price: 2.99,
@@ -225,7 +225,7 @@ export default function Home() {
           numbers: "5",
         },
         {
-          id: 4,
+          id: 24,
           name: "Healthy noodle with spinach leaf",
           img: "/img/food-4.svg",
           price: 3.29,
