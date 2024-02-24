@@ -40,7 +40,9 @@ export default function Header() {
   return (
     <div className="flex items-center justify-between">
       <div>
-        <p className="text-white text-3xl font-semibold">Mahi Resto</p>
+        <p className="text-white text-lg sm:text-2xl md:text-3xl font-semibold">
+          Mahi Resto
+        </p>
         <div className="mt-2">{currentDate}</div>
       </div>
 

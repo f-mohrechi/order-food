@@ -255,16 +255,16 @@ export default function Home() {
           <Sidebar options={options} />
         </div>
 
-        <div className="col-start-2 col-end-8 h-full">
+        <div className="col-start-3 col-end-13 h-full">
           <Header />
           <div className="my-10">
             <Menu menuItems={menuItems} handleTabClick={handleTabClick} />
           </div>
         </div>
 
-        <div className="col-start-8 col-end-13 fixed top-6 right-40">
+        {/* <div className="col-start-9 col-end-12 fixed top-6 right-40">
           <Cart />
-        </div>
+        </div> */}
       </div>
     </div>
   );

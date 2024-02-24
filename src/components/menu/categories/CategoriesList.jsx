@@ -2,19 +2,23 @@ import React from "react";
 
 export default function CategoriesList({ menuItems, handleTabClick }) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center overflow-x-scroll">
       {menuItems.map((item, index) => {
         return (
           <div
-            key={index}
-            onClick={() => handleTabClick(index)}
-            className={`px-8 border-b-2 cursor-pointer pb-2 transition-all ease-in-out delay-75 ${
+            className={`  border-b-2 ${
               item.selected
-                ? "border-b-primary-200 text-primary-200"
+                ? "border-b-primary-200 text-primary-200 border-b-2"
                 : "border-b-gray-200"
             }`}
           >
-            <p className="">{item.name}</p>
+            <div
+              key={index}
+              onClick={() => handleTabClick(index)}
+              className={`px-4 lg:px-8  cursor-pointer pb-2 transition-all ease-in-out delay-75 text-nowrap text-sm md:text-base `}
+            >
+              <p className="">{item.name}</p>
+            </div>
           </div>
         );
       })}
