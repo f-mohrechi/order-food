@@ -1,63 +1,62 @@
-import { Fragment, useState } from "react";
-import { Listbox, Transition } from "@headlessui/react";
+import React, { useState, useEffect, useRef } from "react";
 
-export default function DropDownMenu({ propsItems, handleTabClick }) {
-  const [selected, setSelected] = useState(propsItems[0]);
+function DropdownMenu({ items, handleTabClick }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(
+    items.find((item) => item.selected)
+  );
+  const dropdownRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
+
+  const handleItemClick = (index) => {
+    handleTabClick(index);
+    setSelectedItem(items[index]);
+    setIsOpen(false);
+  };
 
   return (
-    <div className="w-72">
-      <Listbox
-        value={selected}
-        onChange={(value) => {
-          setSelected(value);
-          const selectedIndex = propsItems.findIndex(
-            (item) => item.name === value.name
-          );
-          handleTabClick(selectedIndex);
-        }}
+    <div className="relative" ref={dropdownRef}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="bg-dark-200 rounded-lg px-4 py-2 cursor-pointer"
       >
-        <div className="relative mt-1">
-          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-dark-200 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none">
-            <span className="block truncate">{selected.name}</span>
-            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"></span>
-          </Listbox.Button>
-          <Transition
-            as={Fragment}
-            leave="transition ease-in duration-100"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+        {selectedItem.name}
+      </button>
+      {isOpen && (
+        <div className="absolute left-0 z-40 mt-2 w-48 rounded-md shadow-lg bg-dark-200">
+          <div
+            className="py-1"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="options-menu"
           >
-            <Listbox.Options className="absolute mt-1 z-40 max-h-60 w-full overflow-auto rounded-md bg-dark-200 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none">
-              {propsItems.map((item, index) => (
-                <Listbox.Option
-                  onClick={() => handleTabClick(index)}
-                  key={index}
-                  className={({ active }) =>
-                    `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
-                      active
-                        ? "bg-gray-500 text-dark-200-200"
-                        : "text-primary-200"
-                    }`
-                  }
-                  value={item.name}
-                >
-                  {({ selected }) => (
-                    <>
-                      <span
-                        className={`${
-                          selected ? "font-medium" : "font-normal"
-                        }`}
-                      >
-                        {item.name}
-                      </span>
-                    </>
-                  )}
-                </Listbox.Option>
-              ))}
-            </Listbox.Options>
-          </Transition>
+            {items.map((item, index) => (
+              <a
+                key={index}
+                onClick={() => handleItemClick(index)}
+                className="block px-4 py-2 text-sm hover:bg-gray-50 text-primary-200 hover:text-dark-200 cursor-pointer"
+                role="menuitem"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
         </div>
-      </Listbox>
+      )}
     </div>
   );
 }
+
+export default DropdownMenu;
