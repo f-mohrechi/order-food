@@ -46,7 +46,7 @@ export default function Header() {
         <div className="mt-2">{currentDate}</div>
       </div>
 
-      <div className="mt-5 sm:mt-0 w-full">
+      <div className="mt-5 sm:mt-0">
         <TextField />
       </div>
     </div>

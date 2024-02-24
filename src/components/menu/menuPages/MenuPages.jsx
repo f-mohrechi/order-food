@@ -3,7 +3,7 @@ import FoodBox from "../../foodBox";
 
 export default function MenuPages({ menuItems }) {
   return (
-    <div className="flex justify-center flex-wrap sm:grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mt-20 gap-x-6 2xl:gap-x-10 gap-y-20">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center mt-20 sm:gap-x-6 2xl:gap-x-10 gap-y-20">
       {menuItems
         .filter((item) => item.selected)
         .map((item) => {
