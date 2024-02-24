@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CategoriesList({ menuItems, handleTabClick }) {
   return (
-    <div className="flex items-center overflow-x-scroll">
+    <div className="flex items-center">
       {menuItems.map((item, index) => {
         return (
           <div

@@ -251,11 +251,11 @@ export default function Home() {
   return (
     <div className="px-6 lg:px-16 2xl:px-40 py-6">
       <div className="grid grid-cols-12 gap-8">
-        <div className="col-start-1 col-end-2 h-full fixed top-6">
+        <div className="hidden md:block col-start-1 col-end-2 h-full fixed top-6">
           <Sidebar options={options} />
         </div>
 
-        <div className="col-start-3 col-end-13 h-full">
+        <div className="col-start-1 md:col-start-3 col-end-13 h-full">
           <Header />
           <div className="my-10">
             <Menu menuItems={menuItems} handleTabClick={handleTabClick} />

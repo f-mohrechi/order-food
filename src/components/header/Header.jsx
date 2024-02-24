@@ -38,7 +38,7 @@ export default function Header() {
   }
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="sm:flex items-center justify-between">
       <div>
         <p className="text-white text-lg sm:text-2xl md:text-3xl font-semibold">
           Mahi Resto
@@ -46,7 +46,7 @@ export default function Header() {
         <div className="mt-2">{currentDate}</div>
       </div>
 
-      <div>
+      <div className="mt-5 sm:mt-0 w-full">
         <TextField />
       </div>
     </div>
