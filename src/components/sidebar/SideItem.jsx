@@ -1,17 +1,18 @@
 import React from "react";
 
-export default function SideItem({ data, index, active, activation }) {
+export default function SideItem({ img, handleSelectPage, title, isActive }) {
   return (
     <div
-      key={index}
-      onClick={() => activation(index)}
+      onClick={() => {
+        handleSelectPage(title);
+      }}
       className="p-3 bg-transparent rounded-xl cursor-pointer"
     >
       <img
         className={` transition-all ease-in-out delay-75 ${
-          active[index] ? "contrast-100" : " contrast-0"
+          isActive ? "contrast-100" : " contrast-0"
         }`}
-        src={data.img}
+        src={img}
         alt=""
       />
     </div>

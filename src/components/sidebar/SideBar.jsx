@@ -2,12 +2,9 @@ import { useState } from "react";
 import SideItem from "./SideItem";
 import { useSelector } from "react-redux";
 
-export default function Sidebar({ options }) {
+export default function Sidebar({ handleSelectPage, activeComponent }) {
   const cart = useSelector((state) => state.cart);
-  const [active, setActive] = useState({});
-  const activation = (index) => {
-    setActive({ [index]: true });
-  };
+
   return (
     <div className="bg-dark-200 rounded-2xl h-[94vh] py-6 px-4">
       <div className="h-[90vh] overflow-y-auto">
@@ -18,10 +15,10 @@ export default function Sidebar({ options }) {
 
           <div className="relative">
             <img
-              onClick={() => activation(4)}
+              onClick={() => handleSelectPage("Cart")}
               src="/img/cart.svg"
               className={` transition-all ease-in-out delay-75 cursor-pointer ${
-                active[4] ? "contrast-100" : " contrast-0"
+                activeComponent === "Cart" ? "contrast-100" : " contrast-0"
               }`}
               alt=""
             />
@@ -30,17 +27,27 @@ export default function Sidebar({ options }) {
               <p className="text-xs">{cart.length}</p>
             </div>
           </div>
-          {options.map((item, index) => {
-            return (
-              <SideItem
-                data={item}
-                key={index}
-                index={index}
-                active={active}
-                activation={activation}
-              />
-            );
-          })}
+
+          <SideItem
+            isActive={activeComponent === "Menu" ? true : false}
+            handleSelectPage={handleSelectPage}
+            title={"Menu"}
+            img={"/img/home.svg"}
+          />
+
+          <SideItem
+            isActive={activeComponent === "Settings" ? true : false}
+            handleSelectPage={handleSelectPage}
+            title={"Settings"}
+            img={"/img/settings.svg"}
+          />
+
+          <SideItem
+            isActive={activeComponent === "Login" ? true : false}
+            handleSelectPage={handleSelectPage}
+            title={"Login"}
+            img={"/img/logout.svg"}
+          />
         </div>
       </div>
     </div>
