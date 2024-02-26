@@ -16,8 +16,14 @@ export default function CartItem({ food }) {
       <div className="grid grid-cols-6 items-center">
         <div className="col-span-3">
           <div className="flex">
-            <img src={food.img} width={40} height={40} alt="" />
-            <div className="pl-5">
+            <img
+              src={food.img}
+              width={40}
+              height={40}
+              alt=""
+              className="hidden sm:block"
+            />
+            <div className="sm:pl-5">
               <p className="text-sm font-medium">{food.name}</p>
               <p className="text-xs font-medium text-gray-50">$ {food.price}</p>
             </div>
@@ -25,18 +31,24 @@ export default function CartItem({ food }) {
         </div>
 
         <div className="flex justify-center">
-          <div className="bg-gray-100 rounded-lg border border-gray-200 w-12 h-12 flex items-center justify-center">
+          <div className="bg-gray-100 rounded-lg border border-gray-200 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 text-sm flex items-center justify-center">
             <p>{food.quantity}</p>
           </div>
         </div>
 
         <div>
-          <p className="font-semibold text-end">$ {totalPrice.toFixed(2)}</p>
+          <p className="text-sm font-medium sm:text-base sm:font-semibold text-end">
+            $ {totalPrice.toFixed(2)}
+          </p>
         </div>
 
         <div className="flex justify-end">
           <button onClick={() => handleDelete(food)}>
-            <img className="w-6 h-6" src="/img/delete.svg" alt="" />
+            <img
+              className="w-4 h-4 sm:w-6 sm:h-6"
+              src="/img/delete.svg"
+              alt=""
+            />
           </button>
         </div>
       </div>
