@@ -1,2 +1,3 @@
 import TextField from "./TextField";
-export default TextField;
+import Input from "./Input";
+export { TextField, Input };

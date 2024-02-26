@@ -5,13 +5,19 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import ClientProvider from "./provider/ClientProvider";
+import { ContextProvider } from "./utils/providers/ContextProvider";
+import { ToastProvider } from "./utils/providers/ToastProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ClientProvider>
       <BrowserRouter>
-        <App />
+        <ContextProvider>
+          <ToastProvider>
+            <App />
+          </ToastProvider>
+        </ContextProvider>
       </BrowserRouter>
     </ClientProvider>
   </React.StrictMode>

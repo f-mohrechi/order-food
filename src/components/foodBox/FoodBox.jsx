@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, reduceQuantity } from "../../actions/action";
-import Button from "../button";
+import { Button } from "../button";
 
 export default function FoodBox({ foods }) {
   const dispatch = useDispatch();
