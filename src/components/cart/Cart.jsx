@@ -10,7 +10,7 @@ export default function Cart() {
   );
 
   return (
-    <div className="bg-dark-200 pl-10 py-6 rounded-2xl h-[95vh] w-[400px]">
+    <div className="bg-dark-200 pl-10 py-6 rounded-2xl h-[93vh] w-[400px]">
       {cart.length > 0 ? (
         <div className=" flex flex-col justify-between h-full">
           <div className="h-full flex-1">

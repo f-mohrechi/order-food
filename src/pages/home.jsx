@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Sidebar } from "../components/sidebar";
 import Menu from "./Menu";
-import Cart from "../components/cart";
+import CartPage from "./cart";
 
 export default function Home() {
   const [activeComponent, setActiveComponent] = useState("Menu");
@@ -15,7 +15,7 @@ export default function Home() {
       case "Menu":
         return <Menu />;
       case "Cart":
-        return <Cart />;
+        return <CartPage />;
       default:
         return <Menu />;
     }
