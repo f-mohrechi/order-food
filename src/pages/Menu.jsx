@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/header";
+import { Header } from "../components/header";
 import MainMenu from "../components/menu/MainMenu";
 
 export default function Menu() {
