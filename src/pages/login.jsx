@@ -45,7 +45,7 @@ function Login() {
         localStorage.setItem("user", user);
         dispatch("user", user);
         toastConfig.success("login successful");
-        navigate("/home");
+        navigate("/");
         console.log("result", data);
         console.log("user", user);
       })
