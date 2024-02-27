@@ -18,7 +18,7 @@ const AuthContext = ({ children }) => {
   }, []);
 
   const isAuthenticated = () => {
-    return !!state.user.username;
+    return !!state.user?.username;
   };
 
   const dispatch = (key, value) => {
