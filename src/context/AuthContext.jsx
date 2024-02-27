@@ -14,17 +14,23 @@ const AuthContext = ({ children }) => {
     if (user) {
       data = { ...data, user: JSON.parse(user) };
     }
-
     setState(data);
   }, []);
-  console.log("first", state.user);
 
   const isAuthenticated = () => {
-    return !!state.user;
+    return !!state.user.username;
   };
 
+  const dispatch = (key, value) => {
+    setState({ ...state, [key]: value });
+  };
+
+  console.log("auth", isAuthenticated());
+
   return (
-    <Context.Provider value={{ ...state, isAuthenticated }}>
+    <Context.Provider
+      value={{ ...state, isAuthenticated: isAuthenticated(), dispatch }}
+    >
       {children}
     </Context.Provider>
   );

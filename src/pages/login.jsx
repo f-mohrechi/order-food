@@ -1,18 +1,19 @@
-import { useRef, useState } from "react";
-import { login } from "../services/auth";
-import { FiLock, FiUser } from "react-icons/fi";
-import toastConfig from "../configs/ToastConfig";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import toastConfig from "../configs/ToastConfig";
+import { FiLock, FiUser } from "react-icons/fi";
+import { login } from "../services/auth";
 import { Input } from "../components/textField";
 import Title from "../components/AuthTitle";
 import { PrimaryButton } from "../components/button";
 import TextLink from "./../components/textLink";
+import { Context } from "../context/AuthContext";
 
 function Login() {
+  const { dispatch } = useContext(Context);
   const navigate = useNavigate();
   const usernameRef = useRef();
   const passwordRef = useRef();
-
   const [error, setError] = useState({});
 
   const handleSubmit = (e) => {
@@ -42,21 +43,18 @@ function Login() {
         const user = response.config.data;
         localStorage.setItem("token", data);
         localStorage.setItem("user", user);
+        dispatch("user", user);
         toastConfig.success("login successful");
-        navigate("/home");
+        navigate("/");
         console.log("result", data);
         console.log("user", user);
       })
       .catch((error) => {
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
           toastConfig.error(`Error: ${error.response.data}`);
         } else if (error.request) {
-          // The request was made but no response was received
           toastConfig.error("No response from server");
         } else {
-          // Something happened in setting up the request that triggered an Error
           toastConfig.error("Error", error.message);
         }
       });

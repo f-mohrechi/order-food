@@ -3,6 +3,8 @@ import { Sidebar } from "../components/sidebar";
 import Menu from "./Menu";
 import CartPage from "./cart";
 import { MobileHeader } from "../components/header";
+import Login from "./login";
+import Logout from "./logout";
 
 export default function Home() {
   const [activeComponent, setActiveComponent] = useState("Menu");
@@ -17,6 +19,10 @@ export default function Home() {
         return <Menu />;
       case "Cart":
         return <CartPage />;
+      case "Login":
+        return <Login />;
+      case "Logout":
+        return <Logout />;
       default:
         return <Menu />;
     }
