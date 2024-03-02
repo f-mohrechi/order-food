@@ -38,13 +38,11 @@ export default function Cart() {
 
             <div className="pr-5">
               <div className="max-h-[600px] overflow-y-scroll pr-3">
-                {cart.map((item, index) => {
-                  return (
-                    <div key={index}>
-                      <CartItem food={item} />
-                    </div>
-                  );
-                })}
+                {cart.map((item) => (
+                  <div key={item.id}>
+                    <CartItem food={item} key={item.id} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>

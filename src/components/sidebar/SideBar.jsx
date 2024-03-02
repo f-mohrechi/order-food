@@ -6,15 +6,6 @@ import { useSelector } from "react-redux";
 export default function Sidebar({ handleSelectPage, activeComponent }) {
   const cart = useSelector((state) => state.cart);
   const { user, isAuthenticated } = useContext(Context);
-  console.log("isAuthenticated", isAuthenticated);
-
-  // const isT = useMemo(() => {
-  //   const lo = localStorage.getItem("user");
-  //   if (!lo) return false;
-  //   else return true;
-  // }, []);
-
-  // console.log("id", isT);
 
   return (
     <div className="bg-dark-200 rounded-2xl h-[93vh] py-6 px-4">

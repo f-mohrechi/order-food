@@ -46,9 +46,7 @@ function Login() {
         dispatch("user", user);
         toastConfig.success("login successful");
         navigate("/");
-        window.location.reload();
-        console.log("result", data);
-        console.log("user", user);
+        // window.location.reload();
       })
       .catch((error) => {
         if (error.response) {

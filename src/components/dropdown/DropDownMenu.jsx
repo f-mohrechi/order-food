@@ -42,10 +42,12 @@ function DropdownMenu({ items, handleTabClick }) {
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
-            {items.map((item, index) => (
+            {items.map((item) => (
               <a
-                key={index}
-                onClick={() => handleItemClick(index)}
+                key={item.name}
+                onClick={() =>
+                  handleItemClick(items.findIndex((e) => e.name === item.name))
+                }
                 className="block px-4 py-2 text-sm hover:bg-gray-50 text-primary-200 hover:text-dark-200 cursor-pointer"
                 role="menuitem"
               >

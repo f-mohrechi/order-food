@@ -25,8 +25,6 @@ const AuthContext = ({ children }) => {
     setState({ ...state, [key]: value });
   };
 
-  console.log("auth", isAuthenticated());
-
   return (
     <Context.Provider
       value={{ ...state, isAuthenticated: isAuthenticated(), dispatch }}

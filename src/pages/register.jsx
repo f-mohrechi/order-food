@@ -42,7 +42,6 @@ function Register() {
     register(data).then((res) => {
       if (res.status === 200) {
         navigate(-1);
-        console.log("result", res.config.data);
       }
     });
   };
