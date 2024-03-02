@@ -7,11 +7,11 @@ export default function MenuPages({ menuItems }) {
       {menuItems
         .filter((item) => item.selected)
         .map((item) => (
-          <React.Fragment key={item.id}>
+          <React.Fragment key={item.name}>
             {item.items
               .sort((a, b) => b.availability - a.availability)
               .map((item) => {
-                return <FoodBox foods={item} key={item.id} />;
+                return <FoodBox foods={item} key={item.name} />;
               })}
           </React.Fragment>
         ))}
