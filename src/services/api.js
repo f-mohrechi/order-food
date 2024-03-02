@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3008/auth",
+  baseURL: "https://food-backend.liara.run/auth",
 });
 
 export default api;
