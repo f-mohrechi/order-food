@@ -1,11 +1,11 @@
-import { useContext, useMemo } from "react";
+import { useContext } from "react";
 import { Context } from "../../context/AuthContext";
 import SideItem from "./SideItem";
 import { useSelector } from "react-redux";
 
 export default function Sidebar({ handleSelectPage, activeComponent }) {
   const cart = useSelector((state) => state.cart);
-  const { user, isAuthenticated } = useContext(Context);
+  const { isAuthenticated } = useContext(Context);
 
   return (
     <div className="bg-dark-200 rounded-2xl h-[93vh] py-6 px-4">

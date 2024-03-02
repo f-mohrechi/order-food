@@ -7,15 +7,15 @@ const AuthContext = ({ children }) => {
   const [state, setState] = useState({
     user: {},
   });
+  const user = localStorage.getItem("user");
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
     let data = { ...state };
     if (user) {
       data = { ...data, user: JSON.parse(user) };
     }
     setState(data);
-  }, []);
+  }, [user]);
 
   const isAuthenticated = () => {
     return !!state.user?.username;
