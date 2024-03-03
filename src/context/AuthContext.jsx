@@ -6,6 +6,7 @@ export const Context = createContext({});
 const AuthContext = ({ children }) => {
   const [state, setState] = useState({
     user: {},
+    installPrompt: null,
   });
   const user = localStorage.getItem("user");
 
@@ -15,6 +16,14 @@ const AuthContext = ({ children }) => {
       data = { ...data, user: JSON.parse(user) };
     }
     setState(data);
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      setState({ ...state, installPrompt: e });
+    });
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", (e) => {});
+    };
   }, [user]);
 
   const isAuthenticated = () => {

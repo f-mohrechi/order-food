@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ContextProvider } from "./utils/providers/ContextProvider";
 import { ToastProvider } from "./utils/providers/ToastProvider";
 import ClientProvider from "./utils/providers/ClientProvider";
+import * as serviceWorkers from "./serviceWorkerRegistration";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +23,8 @@ root.render(
     </ClientProvider>
   </React.StrictMode>
 );
+
+serviceWorkers.register();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
