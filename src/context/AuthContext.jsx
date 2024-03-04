@@ -16,14 +16,14 @@ const AuthContext = ({ children }) => {
     setState(data);
 
     // PWA
-    // window.addEventListener("beforeinstallprompt", (e) => {
-    //   e.preventDefault();
-    //   setState({ ...state, installPrompt: e });
-    // });
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      setState({ ...data, installPrompt: e });
+    });
 
-    // return () => {
-    //   window.removeEventListener("beforeinstallprompt", (e) => {});
-    // };
+    return () => {
+      window.removeEventListener("beforeinstallprompt", (e) => {});
+    };
   }, [user]);
 
   const isAuthenticated = () => {
