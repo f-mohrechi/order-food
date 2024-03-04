@@ -15,15 +15,15 @@ export default function InstallPrompt() {
             You didn't install the PWA
           </p>
         </div>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center gap-6">
           <PrimaryButton
             text={"install"}
-            propsClass={"bg-dark-100"}
+            propsClass={"bg-dark-100 border-dark-100"}
             OnClick={() => installPrompt.prompt()}
           />
           <PrimaryButton
             text={"close"}
-            propsClass={"bg-gray-100"}
+            propsClass={"border-gray-100 text-gray-100"}
             OnClick={() => setShow(false)}
           />
         </div>
