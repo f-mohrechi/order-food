@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoCloseSharp } from "react-icons/io5";
 import MobileHeaderItem from "./MobileHeaderItem";
 import { useSelector } from "react-redux";
+import { Context } from "../../context/AuthContext";
 
 export default function MobileHeader({ handleSelectPage, activeComponent }) {
   const cart = useSelector((state) => state.cart);
+  const { isAuthenticated } = useContext(Context);
   const [open, setOpen] = useState(false);
 
   const openCart = () => {
@@ -52,13 +54,19 @@ export default function MobileHeader({ handleSelectPage, activeComponent }) {
               title={"Settings"}
               setOpen={setOpen}
             />
-            <MobileHeaderItem
-              img={"/img/logout.svg"}
-              isActive={activeComponent === "Login" ? true : false}
-              handleSelectPage={handleSelectPage}
-              title={"Login"}
-              setOpen={setOpen}
-            />
+            {isAuthenticated ? (
+              <MobileHeaderItem
+                img={"/img/logout.svg"}
+                link={"/logout"}
+                setOpen={setOpen}
+              />
+            ) : (
+              <MobileHeaderItem
+                img={"/img/login.svg"}
+                link={"/login"}
+                setOpen={setOpen}
+              />
+            )}
           </div>
         </div>
       )}

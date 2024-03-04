@@ -12,18 +12,18 @@ const AuthContext = ({ children }) => {
 
   useEffect(() => {
     let data = { ...state };
-    if (user) {
-      data = { ...data, user: JSON.parse(user) };
-    }
+    if (user) data = { ...data, user: JSON.parse(user) };
     setState(data);
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      setState({ ...state, installPrompt: e });
-    });
 
-    return () => {
-      window.removeEventListener("beforeinstallprompt", (e) => {});
-    };
+    // PWA
+    // window.addEventListener("beforeinstallprompt", (e) => {
+    //   e.preventDefault();
+    //   setState({ ...state, installPrompt: e });
+    // });
+
+    // return () => {
+    //   window.removeEventListener("beforeinstallprompt", (e) => {});
+    // };
   }, [user]);
 
   const isAuthenticated = () => {

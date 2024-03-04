@@ -2,8 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import { PrimaryButton } from "../button";
+import WithAuth from "../../helper/auth/WithAuth";
 
-export default function Cart() {
+const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -65,4 +66,6 @@ export default function Cart() {
       )}
     </div>
   );
-}
+};
+
+export default WithAuth(Cart);

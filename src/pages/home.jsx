@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Sidebar } from "../components/sidebar";
-import Menu from "./Menu";
-import CartPage from "./cart";
 import { MobileHeader } from "../components/header";
-import Login from "./login";
-import Logout from "./logout";
 import InstallPrompt from "../components/installPWAPrompt";
+import { Login, Logout, Menu, CartPage } from "./index";
 
 export default function Home() {
   const [activeComponent, setActiveComponent] = useState("Menu");
