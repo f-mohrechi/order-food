@@ -15,6 +15,10 @@ function Logout() {
     // window.location.reload();
   };
 
+  const backToHome = () => {
+    navigate("/");
+  };
+
   return (
     <div className="flex justify-center items-center h-screen px-5">
       <div className="flex flex-col items-center gap-4 p-10 bg-dark-200 rounded-lg shadow-lg w-[400px]">
@@ -22,8 +26,9 @@ function Logout() {
           <Title title={Strings.logout} text={Strings.logoutAccount} />
         </div>
         <form onSubmit={handleLogout} className="w-full">
-          <div className="mt-14 flex justify-center">
+          <div className="flex justify-between items-center gap-10 mt-14">
             <PrimaryButton type={"submit"} text={Strings.logout} />
+            <PrimaryButton text={Strings.cancel} OnClick={backToHome} />
           </div>
         </form>
       </div>

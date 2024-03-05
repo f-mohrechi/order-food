@@ -16,5 +16,6 @@
   "createAccount": "Create an account",
   "haveAccount": "Already have an account? Login",
   "logout": "Logout",
-  "logoutAccount": "Log out of your account"
+  "logoutAccount": "Log out of your account",
+  "cancel": "cancel"
 }
