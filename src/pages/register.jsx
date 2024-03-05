@@ -6,6 +6,7 @@ import { Input } from "../components/textField";
 import Title from "../components/AuthTitle";
 import { PrimaryButton } from "../components/button";
 import TextLink from "./../components/textLink";
+import Strings from "../helper/localization/localization";
 
 function Register() {
   const navigate = useNavigate();
@@ -50,35 +51,35 @@ function Register() {
     <div className="flex justify-center items-center h-screen px-5">
       <div className="flex flex-col items-center gap-4 p-10 bg-dark-200 rounded-lg shadow-lg w-[400px]">
         <div>
-          <Title title={"Register"} text={"Create an account"} />
+          <Title title={Strings.register} text={Strings.createAccount} />
         </div>
         <form onSubmit={handleSubmit} className="w-full">
           <div>
             <Input
-              label={"username"}
+              label={Strings.username}
               error={error["username"]}
               ref={usernameRef}
               type="text"
-              placeholder=" username"
+              placeholder={Strings.username}
               icon={<FiUser />}
             />
           </div>
           <div className="mt-5">
             <Input
-              label={"password"}
+              label={Strings.password}
               error={error["password"]}
               ref={passwordRef}
               type="password"
-              placeholder=" Password"
+              placeholder={Strings.password}
               icon={<FiLock />}
             />
           </div>
           <div className="mt-14 flex justify-center">
-            <PrimaryButton type={"submit"} text={"Register"} />
+            <PrimaryButton type={"submit"} text={Strings.register} />
           </div>
 
           <div className="mt-8">
-            <TextLink text={"Already have an account? Login"} link={"/login"} />
+            <TextLink text={Strings.haveAccount} link={"/login"} />
           </div>
         </form>
       </div>

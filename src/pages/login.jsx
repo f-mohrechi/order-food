@@ -8,6 +8,7 @@ import Title from "../components/AuthTitle";
 import { PrimaryButton } from "../components/button";
 import TextLink from "./../components/textLink";
 import { Context } from "../context/AuthContext";
+import Strings from "../helper/localization/localization";
 
 function Login() {
   const { dispatch } = useContext(Context);
@@ -62,38 +63,35 @@ function Login() {
     <div className="flex justify-center items-center h-screen px-5">
       <div className="flex flex-col items-center gap-4 p-10 bg-dark-200 rounded-lg shadow-lg w-[400px]">
         <div>
-          <Title title={"Login"} text={"Welcome back"} />
+          <Title title={Strings.login} text={Strings.welcomeBack} />
         </div>
         <form onSubmit={handleSubmit} className="w-full">
           <div>
             <Input
-              label={"username"}
+              label={Strings.username}
               error={error["username"]}
               ref={usernameRef}
               type="text"
-              placeholder=" username"
+              placeholder={Strings.username}
               icon={<FiUser />}
             />
           </div>
           <div className="mt-5">
             <Input
-              label={"password"}
+              label={Strings.password}
               error={error["password"]}
               ref={passwordRef}
               type="password"
-              placeholder=" Password"
+              placeholder={Strings.password}
               icon={<FiLock />}
             />
           </div>
           <div className="mt-14 flex justify-center">
-            <PrimaryButton type={"submit"} text={"login"} />
+            <PrimaryButton type={"submit"} text={Strings.login} />
           </div>
 
           <div className="mt-8">
-            <TextLink
-              text={"Don't have an account? Register"}
-              link={"/register"}
-            />
+            <TextLink text={Strings.noAccount} link={"/register"} />
           </div>
         </form>
       </div>

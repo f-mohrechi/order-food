@@ -1,4 +1,20 @@
 {
   "search": "search",
-  "test": "test"
+  "settings": "settings",
+  "select your language": "Select your language.",
+  "english": "English",
+  "persian": "Persian",
+  "installPrompt": "Do you want to install PWA?",
+  "install": "install",
+  "close": "close",
+  "login": "Login",
+  "welcomeBack": "Welcome back",
+  "username": "username",
+  "password": "password",
+  "noAccount": "Don't have an account? Register",
+  "register": "Register",
+  "createAccount": "Create an account",
+  "haveAccount": "Already have an account? Login",
+  "logout": "Logout",
+  "logoutAccount": "Log out of your account"
 }

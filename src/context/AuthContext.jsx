@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import Strings from "../helper/localization/localization";
-import store from "./../store/store";
 
 export const Context = createContext({});
 
@@ -22,11 +21,10 @@ const AuthContext = ({ children }) => {
 
     // change language
     const settings = localStorage.getItem("settings");
-    if (settings) {
-      data = { ...data, settings: JSON.parse(settings) };
-    }
+    if (settings) data = { ...data, settings: JSON.parse(settings) };
+
     Strings.setLanguage(data.settings.language);
-    setState(data);
+    setState({ ...data });
 
     // PWA
     window.addEventListener("beforeinstallprompt", (e) => {

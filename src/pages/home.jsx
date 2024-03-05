@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Sidebar } from "../components/sidebar";
 import { MobileHeader } from "../components/header";
 import InstallPrompt from "../components/installPWAPrompt";
-import { Login, Logout, Menu, CartPage } from "./index";
-import ChangeLang from "./settings";
+import { Login, Logout, Menu, CartPage, Settings } from "./index";
 
 export default function Home() {
   const [activeComponent, setActiveComponent] = useState("Menu");
@@ -19,7 +18,7 @@ export default function Home() {
       case "Cart":
         return <CartPage />;
       case "Settings":
-        return <ChangeLang />;
+        return <Settings />;
       case "Login":
         return <Login />;
       case "Logout":

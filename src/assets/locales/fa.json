@@ -1,4 +1,20 @@
 {
   "search": "جست‌وجو",
-  "test": "تست"
+  "settings": "تنظیمات",
+  "select your language": "زبان خود را انتخاب کنید.",
+  "english": "انگلیسی",
+  "persian": "فارسی",
+  "installPrompt": "تمایل دارید اپلیکیشن را نصب کنید؟",
+  "install": "نصب",
+  "close": "بستن",
+  "login": "ورود",
+  "welcomeBack": "خوش آمدید.",
+  "username": "نام کاربری",
+  "password": "رمز عبور",
+  "noAccount": "حساب کاربری ندارید؟ وارد شوید.",
+  "register": "ثبت نام",
+  "createAccount": "ساخت حساب کاربری",
+  "haveAccount": "حساب کاربری دارید؟ وارد شوید.",
+  "logout": "خروج",
+  "logoutAccount": "از حساب کاربری خود خارج میشوید"
 }
