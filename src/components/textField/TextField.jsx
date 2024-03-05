@@ -1,4 +1,5 @@
 import React from "react";
+import Strings from "../../helper/localization/localization";
 
 export default function TextField() {
   return (
@@ -9,7 +10,7 @@ export default function TextField() {
       <img className="pr-4" src="/img/search.svg" alt="" />
       <input
         className="bg-transparent w-full outline-none"
-        placeholder="search"
+        placeholder={Strings.search}
       />
     </div>
   );
