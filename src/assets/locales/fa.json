@@ -17,5 +17,13 @@
   "haveAccount": "حساب کاربری دارید؟ وارد شوید.",
   "logout": "خروج",
   "logoutAccount": "از حساب کاربری خود خارج میشوید",
-  "cancel": "انصراف"
+  "cancel": "انصراف",
+  "emptyCart": "سبد خرید شما خالی است!",
+  "orders": "سفارش‌ها",
+  "item": "نام",
+  "number": "تعداد",
+  "price": "قیمت",
+  "action": "عملیات",
+  "subTotal": "جمع کل",
+  "continuePayment": "ادامه خرید"
 }

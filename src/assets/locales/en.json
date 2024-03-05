@@ -17,5 +17,13 @@
   "haveAccount": "Already have an account? Login",
   "logout": "Logout",
   "logoutAccount": "Log out of your account",
-  "cancel": "cancel"
+  "cancel": "cancel",
+  "emptyCart": "Your cart is empty!",
+  "orders": "orders",
+  "item": "item",
+  "number": "number",
+  "price": "price",
+  "action": "action",
+  "subTotal": "Sub total",
+  "continuePayment": "Continue to Payment"
 }

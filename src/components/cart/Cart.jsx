@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import { PrimaryButton } from "../button";
 import WithAuth from "../../helper/auth/WithAuth";
+import Strings from "../../helper/localization/localization";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -17,23 +18,23 @@ const Cart = () => {
         <div className=" flex flex-col justify-between h-full">
           <div className="h-full flex-1">
             <div>
-              <p className="text-xl font-semibold">order</p>
+              <p className="text-xl font-semibold">{Strings.orders}</p>
             </div>
 
             <div className="grid grid-cols-6 py-5 border-b-2 border-b-gray-200 mr-9">
               <div className="col-span-3">
-                <p className="font-semibold">item</p>
+                <p className="font-semibold">{Strings.item}</p>
               </div>
 
               <div>
-                <p className="font-semibold text-center">number</p>
+                <p className="font-semibold text-center">{Strings.number}</p>
               </div>
 
               <div>
-                <p className="font-semibold text-end">price</p>
+                <p className="font-semibold text-end">{Strings.price}</p>
               </div>
               <div>
-                <p className="font-semibold text-end">action</p>
+                <p className="font-semibold text-end">{Strings.action}</p>
               </div>
             </div>
 
@@ -50,18 +51,18 @@ const Cart = () => {
 
           <div className="border-t border-t-gray-200 pt-5 mr-9">
             <div className="flex justify-between w-full pt-3">
-              <p className="text-sm text-gray-50">Sub total</p>
+              <p className="text-sm text-gray-50">{Strings.subTotal}</p>
               <p>$ {totalPrice.toFixed(2)}</p>
             </div>
 
             <div className="flex justify-center mt-4">
-              <PrimaryButton type={"button"} text={"Continue to Payment"} />
+              <PrimaryButton type={"button"} text={Strings.continuePayment} />
             </div>
           </div>
         </div>
       ) : (
         <div className="text-lg font-bold flex items-center h-full justify-center">
-          <p>Your cart is empty!</p>
+          <p>{Strings.emptyCart}</p>
         </div>
       )}
     </div>

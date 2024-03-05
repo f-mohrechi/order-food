@@ -22,7 +22,6 @@ const AuthContext = ({ children }) => {
     // change language
     const settings = localStorage.getItem("settings");
     if (settings) data = { ...data, settings: JSON.parse(settings) };
-
     Strings.setLanguage(data.settings.language);
     setState({ ...data });
 
