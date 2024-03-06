@@ -9,8 +9,8 @@
 html {
   scroll-behavior: smooth;
 }
-
 body {
+  font-family: "Vazirmatn", sans-serif;
   color: var(--foreground-text);
   background-color: var(--foreground-rgb);
 }
