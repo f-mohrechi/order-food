@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TextField } from "../textField";
+import Strings from "../../helper/localization/localization";
 
 export default function Header() {
   const [currentDate, setCurrentDate] = useState(getDate());
@@ -20,6 +21,7 @@ export default function Header() {
     const year = today.getFullYear();
     const date = today.getDate();
     const dayOfWeek = daysOfWeek[today.getDay()];
+    const dayTranslation = Strings[dayOfWeek.toLowerCase()];
     const time = today.toLocaleTimeString("en-US", {
       hour: "numeric",
       minute: "numeric",
@@ -27,7 +29,7 @@ export default function Header() {
     return (
       <div>
         <p className="text-lg font-medium">
-          {dayOfWeek}{" "}
+          {dayTranslation}{" "}
           <span className="mx-3 text-base font-normal">
             {month} / {date} / {year}
           </span>
@@ -41,7 +43,7 @@ export default function Header() {
     <div className="sm:flex items-center justify-between">
       <div>
         <p className="text-white text-lg sm:text-2xl md:text-3xl font-semibold">
-          Mahi Resto
+          {Strings.ResName}
         </p>
         <div className="mt-2">{currentDate}</div>
       </div>

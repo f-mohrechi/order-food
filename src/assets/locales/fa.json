@@ -25,5 +25,14 @@
   "price": "قیمت",
   "action": "عملیات",
   "subTotal": "جمع کل",
-  "continuePayment": "ادامه خرید"
+  "continuePayment": "ادامه خرید",
+  "chooseDish": "انتخاب کنید.",
+  "ResName": "زود فود",
+  "sunday": "یکشنبه",
+  "monday": "دوشنبه",
+  "tuesday": "سه شنبه",
+  "wednesday": "چهارشنبه",
+  "thursday": "پنج شنبه",
+  "friday": "جمعه",
+  "saturday": "شنبه"
 }

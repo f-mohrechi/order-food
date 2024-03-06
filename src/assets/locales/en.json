@@ -25,5 +25,14 @@
   "price": "price",
   "action": "action",
   "subTotal": "Sub total",
-  "continuePayment": "Continue to Payment"
+  "continuePayment": "Continue to Payment",
+  "chooseDish": "choose dishes",
+  "ResName": "Zood Food",
+  "sunday": "Sunday",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday"
 }

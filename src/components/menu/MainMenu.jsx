@@ -3,6 +3,7 @@ import CategoriesList from "./categories/CategoriesList";
 import MenuPages from "./menuPages";
 import MobileCategoriesList from "./categories/MobileCategoriesList";
 import JSONData from "../../db/menuDb.json";
+import Strings from "../../helper/localization/localization";
 
 export default function MainMenu({}) {
   const [menuItems, setMenuItems] = useState(JSONData);
@@ -32,7 +33,7 @@ export default function MainMenu({}) {
       </div>
 
       <div>
-        <p className="text-xl font-semibold mt-5">choose dishes</p>
+        <p className="text-xl font-semibold mt-5">{Strings.chooseDish}</p>
       </div>
 
       <MenuPages menuItems={menuItems} />

@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <div className="px-6 lg:px-16 2xl:px-40 py-6">
-      <div className="mb-4">
+      <div className="mb-4 md:hidden">
         <MobileHeader
           handleSelectPage={handleSelectPage}
           activeComponent={activeComponent}
