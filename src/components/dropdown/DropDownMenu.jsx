@@ -1,6 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { Context } from "../../context/AuthContext";
 
 function DropdownMenu({ items, handleTabClick }) {
+  const { settings } = useContext(Context);
+  const { language } = settings;
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(
     items.find((item) => item.selected)
@@ -35,7 +38,11 @@ function DropdownMenu({ items, handleTabClick }) {
         {selectedItem.name}
       </button>
       {isOpen && (
-        <div className="absolute left-0 z-40 mt-2 w-48 rounded-md shadow-lg bg-dark-200">
+        <div
+          className={`absolute z-40 mt-2 w-48 rounded-md shadow-lg bg-dark-200 ${
+            language === "fa" ? "right-0" : "left-0"
+          }`}
+        >
           <div
             className="py-1"
             role="menu"

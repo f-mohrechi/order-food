@@ -23,7 +23,7 @@ export default function CartItem({ food }) {
               alt=""
               className="hidden sm:block"
             />
-            <div className="sm:pl-5">
+            <div className="sm:px-5">
               <p className="text-sm font-medium">{food.name}</p>
               <p className="text-xs font-medium text-gray-50">$ {food.price}</p>
             </div>
