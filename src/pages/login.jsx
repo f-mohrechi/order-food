@@ -45,16 +45,16 @@ function Login() {
         localStorage.setItem("token", data);
         localStorage.setItem("user", user);
         dispatch("user", user);
-        toastConfig.success("login successful");
+        toastConfig.success(Strings.successLogin);
         navigate("/");
       })
       .catch((error) => {
         if (error.response) {
-          toastConfig.error(`Error: ${error.response.data}`);
+          toastConfig.error(`${Strings.error}: ${error.response.data}`);
         } else if (error.request) {
-          toastConfig.error("No response from server");
+          toastConfig.error(Strings.serverNoResponse);
         } else {
-          toastConfig.error("Error", error.message);
+          toastConfig.error(Strings.error, error.message);
         }
       });
   };

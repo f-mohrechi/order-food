@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { register } from "../services/auth";
 import { FiLock, FiUser } from "react-icons/fi";
 import { useNavigate } from "react-router";
@@ -7,8 +7,11 @@ import Title from "../components/AuthTitle";
 import { PrimaryButton } from "../components/button";
 import TextLink from "./../components/textLink";
 import Strings from "../helper/localization/localization";
+import toastConfig from "../configs/ToastConfig";
+import { Context } from "../context/AuthContext";
 
 function Register() {
+  const { dispatch } = useContext(Context);
   const navigate = useNavigate();
   const usernameRef = useRef();
   const passwordRef = useRef();
@@ -42,7 +45,13 @@ function Register() {
 
     register(data).then((res) => {
       if (res.status === 200) {
-        navigate(-1);
+        const data = res.data;
+        const user = res.config.data;
+        localStorage.setItem("token", data);
+        localStorage.setItem("user", user);
+        dispatch("user", user);
+        toastConfig.success(Strings.successLogin);
+        navigate("/");
       }
     });
   };

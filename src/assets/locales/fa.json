@@ -34,5 +34,8 @@
   "wednesday": "چهارشنبه",
   "thursday": "پنج شنبه",
   "friday": "جمعه",
-  "saturday": "شنبه"
+  "saturday": "شنبه",
+  "successLogin": "با موفقیت وارد شدید.",
+  "error": "خطا",
+  "serverNoResponse": "پاسخی از سمت سرور دریافت نشد."
 }

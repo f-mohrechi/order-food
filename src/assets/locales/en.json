@@ -34,5 +34,8 @@
   "wednesday": "Wednesday",
   "thursday": "Thursday",
   "friday": "Friday",
-  "saturday": "Saturday"
+  "saturday": "Saturday",
+  "successLogin": "login successful",
+  "error": "Error",
+  "serverNoResponse": "No response from server"
 }
