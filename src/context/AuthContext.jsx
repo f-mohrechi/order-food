@@ -9,6 +9,7 @@ const AuthContext = ({ children }) => {
     user: {},
     settings: {
       language: "en",
+      direction: "ltr",
     },
     installPrompt: null,
   });
@@ -23,7 +24,10 @@ const AuthContext = ({ children }) => {
     const settings = localStorage.getItem("settings");
     if (settings) data = { ...data, settings: JSON.parse(settings) };
     Strings.setLanguage(data.settings.language);
-    setState({ ...data });
+    // setState({ ...data });
+    const direction = data.settings.language === "fa" ? "rtl" : "ltr";
+    document.documentElement.setAttribute("dir", direction);
+    setState({ ...data, direction });
 
     // PWA
     window.addEventListener("beforeinstallprompt", (e) => {

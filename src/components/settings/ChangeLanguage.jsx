@@ -5,7 +5,6 @@ import { PrimaryButton } from "../button";
 
 export default function ChangeLanguage() {
   const { dispatch, settings } = useContext(Context);
-  const { language } = settings;
   const handleChangeLanguage = (lang) => {
     Strings.setLanguage(lang);
     dispatch("settings", { ...settings, language: lang }, true);

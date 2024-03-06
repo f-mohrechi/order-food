@@ -4,13 +4,19 @@ import { PrimaryButton } from "../button";
 import Strings from "../../helper/localization/localization";
 
 export default function InstallPrompt() {
-  const { installPrompt } = useContext(Context);
+  const { installPrompt, settings } = useContext(Context);
+  const { language } = settings;
+
   const [show, setShow] = useState(true);
 
   return (
     installPrompt &&
     show && (
-      <div className="fixed bottom-6 right-6 z-50 bg-primary-100 p-4 rounded-lg">
+      <div
+        className={`fixed bottom-6 ${
+          language === "fa" ? "left-6" : "right-6"
+        } z-50 bg-primary-100 p-4 rounded-lg`}
+      >
         <div className="mb-5">
           <p className="text-dark-200 text-lg font-medium">
             {Strings.installPrompt}
