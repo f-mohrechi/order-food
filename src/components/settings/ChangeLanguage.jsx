@@ -7,8 +7,15 @@ export default function ChangeLanguage() {
   const { dispatch, settings } = useContext(Context);
   const handleChangeLanguage = (lang) => {
     Strings.setLanguage(lang);
-    dispatch("settings", { ...settings, language: lang }, true);
+    const direction = lang === "fa" ? "rtl" : "ltr";
+    dispatch(
+      "settings",
+      { ...settings, language: lang, direction: direction },
+      true
+    );
+    document.body.style.direction = direction;
   };
+  console.log(settings, "settings");
   return (
     <div>
       <div>

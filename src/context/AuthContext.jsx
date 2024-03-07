@@ -14,6 +14,7 @@ const AuthContext = ({ children }) => {
     installPrompt: null,
   });
   const user = localStorage.getItem("user");
+  const settings = localStorage.getItem("settings");
 
   useEffect(() => {
     let data = { ...state };
@@ -21,13 +22,11 @@ const AuthContext = ({ children }) => {
     setState(data);
 
     // change language
-    const settings = localStorage.getItem("settings");
     if (settings) data = { ...data, settings: JSON.parse(settings) };
     Strings.setLanguage(data.settings.language);
     // setState({ ...data });
-    const direction = data.settings.language === "fa" ? "rtl" : "ltr";
-    document.documentElement.setAttribute("dir", direction);
-    setState({ ...data, direction });
+
+    setState({ ...data });
 
     // PWA
     window.addEventListener("beforeinstallprompt", (e) => {
@@ -38,7 +37,7 @@ const AuthContext = ({ children }) => {
     return () => {
       window.removeEventListener("beforeinstallprompt", (e) => {});
     };
-  }, [user]);
+  }, [user, settings]);
 
   const isAuthenticated = () => {
     return !!state.user?.username;
