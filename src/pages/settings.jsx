@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import ChangeLanguage from "../components/settings/ChangeLanguage";
 import Strings from "../helper/localization/localization";
+import { Context } from "../context/AuthContext";
 
 export default function Settings() {
+  const { dispatch, settings } = useContext(Context);
+
   return (
     <>
       <div className="flex justify-center w-full">
         <div className="bg-dark-200 p-6 rounded-xl w-96">
           <div className="mb-9">
-            <h2 className="text-3xl font-semibold">{Strings.settings}</h2>
+            <p className="text-3xl font-semibold">{Strings.settings}</p>
           </div>
           <ChangeLanguage />
         </div>

@@ -11,6 +11,7 @@
   "welcomeBack": "Welcome back",
   "username": "username",
   "password": "password",
+  "confirmPassword": "confirm password",
   "noAccount": "Don't have an account? Register",
   "register": "Register",
   "createAccount": "Create an account",

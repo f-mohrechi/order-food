@@ -9,52 +9,95 @@ import TextLink from "./../components/textLink";
 import Strings from "../helper/localization/localization";
 import toastConfig from "../configs/ToastConfig";
 import { Context } from "../context/AuthContext";
+import { useFormik } from "formik";
+import registerSchema from "../helper/validation/registerValidation";
 
 function Register() {
-  const { dispatch } = useContext(Context);
   const navigate = useNavigate();
-  const usernameRef = useRef();
-  const passwordRef = useRef();
+  const { dispatch } = useContext(Context);
+  // const usernameRef = useRef();
+  // const passwordRef = useRef();
+  // const [error, setError] = useState({});
 
-  const [error, setError] = useState({});
+  // const formik = useFormik({
+  //   initialValues: {
+  //     username: "",
+  //     password: "",
+  //     confirm_password: "",
+  //   },
+  //   onSubmit: (values) => {
+  //     console.log(JSON.stringify(values, null, 2));
+  //     navigate("/");
+  //   },
+  //   validationSchema: registerSchema,
+  // });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      username: usernameRef.current.value,
-      password: passwordRef.current.value,
-    };
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+      confirm_password: "",
+    },
+    onSubmit: (values) => {
+      const data = {
+        username: values.username,
+        password: values.password,
+      };
 
-    const errors = {};
-    for (let [key, value] of Object.entries(data)) {
-      if (!value) {
-        errors[key] = `${key} is required`;
-      }
-    }
+      register(data)
+        .then((res) => {
+          if (res.status === 200) {
+            localStorage.setItem("token", res.data);
+            localStorage.setItem("user", JSON.stringify(data));
+            dispatch("user", data);
+            toastConfig.success(Strings.successLogin);
+            navigate("/");
+          }
+        })
+        .catch((error) => {
+          toastConfig.error(error.message);
+        });
+    },
+    validationSchema: registerSchema,
+  });
 
-    if (data.password && data.password.length < 8) {
-      errors["password"] = "Password must be at least 8 characters";
-    }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const data = {
+  //     username: usernameRef.current.value,
+  //     password: passwordRef.current.value,
+  //   };
 
-    if (Object.keys(errors).length > 0) {
-      setError(errors);
-      return;
-    } else {
-      setError({});
-    }
+  //   const errors = {};
+  //   for (let [key, value] of Object.entries(data)) {
+  //     if (!value) {
+  //       errors[key] = `${key} is required`;
+  //     }
+  //   }
 
-    register(data).then((res) => {
-      if (res.status === 200) {
-        const data = res.data;
-        const user = res.config.data;
-        localStorage.setItem("token", data);
-        localStorage.setItem("user", user);
-        dispatch("user", user);
-        toastConfig.success(Strings.successLogin);
-        navigate("/");
-      }
-    });
-  };
+  //   if (data.password && data.password.length < 8) {
+  //     errors["password"] = "Password must be at least 8 characters";
+  //   }
+
+  //   if (Object.keys(errors).length > 0) {
+  //     setError(errors);
+  //     return;
+  //   } else {
+  //     setError({});
+  //   }
+
+  //   register(data).then((res) => {
+  //     if (res.status === 200) {
+  //       const data = res.data;
+  //       const user = res.config.data;
+  //       localStorage.setItem("token", data);
+  //       localStorage.setItem("user", user);
+  //       dispatch("user", user);
+  //       toastConfig.success(Strings.successLogin);
+  //       navigate("/");
+  //     }
+  //   });
+  // };
 
   return (
     <div className="flex justify-center items-center h-screen px-5">
@@ -62,25 +105,44 @@ function Register() {
         <div>
           <Title title={Strings.register} text={Strings.createAccount} />
         </div>
-        <form onSubmit={handleSubmit} className="w-full">
+        <form onSubmit={formik.handleSubmit} className="w-full">
           <div>
             <Input
+              value={formik.values.username}
+              onChange={formik.handleChange}
+              name="username"
               label={Strings.username}
-              error={error["username"]}
-              ref={usernameRef}
               type="text"
               placeholder={Strings.username}
               icon={<FiUser />}
+              error={formik.errors["username"]}
+              // ref={usernameRef}
             />
           </div>
           <div className="mt-5">
             <Input
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              name="password"
               label={Strings.password}
-              error={error["password"]}
-              ref={passwordRef}
               type="password"
               placeholder={Strings.password}
               icon={<FiLock />}
+              error={formik.errors["password"]}
+              // ref={passwordRef}
+            />
+          </div>
+          <div className="mt-5">
+            <Input
+              value={formik.values.confirm_password}
+              onChange={formik.handleChange}
+              name="confirm_password"
+              label={Strings.confirmPassword}
+              type="password"
+              placeholder={Strings.confirmPassword}
+              icon={<FiLock />}
+              error={formik.errors["confirm_password"]}
+              // ref={passwordRef}
             />
           </div>
           <div className="mt-14 flex justify-center">

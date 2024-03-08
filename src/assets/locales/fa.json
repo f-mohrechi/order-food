@@ -11,6 +11,7 @@
   "welcomeBack": "خوش آمدید.",
   "username": "نام کاربری",
   "password": "رمز عبور",
+  "confirmPassword": "تکرار رمز عبور",
   "noAccount": "حساب کاربری ندارید؟ وارد شوید.",
   "register": "ثبت نام",
   "createAccount": "ساخت حساب کاربری",

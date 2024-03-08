@@ -6,7 +6,6 @@ import { PrimaryButton } from "../button";
 export default function ChangeLanguage() {
   const { dispatch, settings } = useContext(Context);
   const handleChangeLanguage = (lang) => {
-    Strings.setLanguage(lang);
     const direction = lang === "fa" ? "rtl" : "ltr";
     dispatch(
       "settings",
@@ -15,7 +14,7 @@ export default function ChangeLanguage() {
     );
     document.body.style.direction = direction;
   };
-  console.log(settings, "settings");
+  console.log(Strings.getLanguage(), "settings");
   return (
     <div>
       <div>

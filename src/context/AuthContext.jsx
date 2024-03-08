@@ -22,8 +22,10 @@ const AuthContext = ({ children }) => {
     setState(data);
 
     // change language
-    if (settings) data = { ...data, settings: JSON.parse(settings) };
-    Strings.setLanguage(data.settings.language);
+    if (settings) {
+      data = { ...data, settings: JSON.parse(settings) };
+    }
+    // Strings.setLanguage(data.settings.language);
     // setState({ ...data });
 
     setState({ ...data });
@@ -38,6 +40,8 @@ const AuthContext = ({ children }) => {
       window.removeEventListener("beforeinstallprompt", (e) => {});
     };
   }, [user, settings]);
+
+  Strings.setLanguage(state.settings.language);
 
   const isAuthenticated = () => {
     return !!state.user?.username;
