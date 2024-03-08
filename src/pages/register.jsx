@@ -19,19 +19,6 @@ function Register() {
   // const passwordRef = useRef();
   // const [error, setError] = useState({});
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     username: "",
-  //     password: "",
-  //     confirm_password: "",
-  //   },
-  //   onSubmit: (values) => {
-  //     console.log(JSON.stringify(values, null, 2));
-  //     navigate("/");
-  //   },
-  //   validationSchema: registerSchema,
-  // });
-
   const formik = useFormik({
     initialValues: {
       username: "",
