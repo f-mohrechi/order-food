@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import { Context } from "../../context/AuthContext";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 function DropdownMenu({ items, handleTabClick }) {
-  // const { settings } = useContext(Context);
-  // const { language } = settings;
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(
     items.find((item) => item.selected)
@@ -52,16 +49,16 @@ function DropdownMenu({ items, handleTabClick }) {
             aria-labelledby="options-menu"
           >
             {items.map((item) => (
-              <a
+              <button
                 key={item.name}
                 onClick={() =>
                   handleItemClick(items.findIndex((e) => e.name === item.name))
                 }
-                className="block px-4 py-2 text-sm hover:bg-gray-50 text-primary-200 hover:text-dark-200 cursor-pointer"
+                className="block px-4 py-2 text-sm hover:bg-gray-50 w-full text-primary-200 hover:text-dark-200 cursor-pointer ease-linear transition-all delay-75"
                 role="menuitem"
               >
                 {item.name}
-              </a>
+              </button>
             ))}
           </div>
         </div>
