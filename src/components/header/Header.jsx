@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { TextField } from "../textField";
-import Strings from "../../helper/localization/localization";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
-  const [currentDate, setCurrentDate] = useState(getDate());
+  const { t } = useTranslation();
 
   function getDate() {
     const daysOfWeek = [
@@ -21,11 +21,12 @@ export default function Header() {
     const year = today.getFullYear();
     const date = today.getDate();
     const dayOfWeek = daysOfWeek[today.getDay()];
-    const dayTranslation = Strings[dayOfWeek.toLowerCase()];
+    const dayTranslation = t(dayOfWeek.toLowerCase());
     const time = today.toLocaleTimeString("en-US", {
       hour: "numeric",
       minute: "numeric",
     });
+
     return (
       <div>
         <p className="text-lg font-medium">
@@ -43,9 +44,9 @@ export default function Header() {
     <div className="sm:flex items-center justify-between">
       <div>
         <p className="text-white text-lg sm:text-2xl md:text-3xl font-semibold">
-          {Strings.ResName}
+          {t("ResName")}
         </p>
-        <div className="mt-2">{currentDate}</div>
+        <div className="mt-2">{getDate()}</div>
       </div>
 
       <div className="mt-5 sm:mt-0">
