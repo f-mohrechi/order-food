@@ -8,6 +8,7 @@ import { ContextProvider } from "./utils/providers/ContextProvider";
 import { ToastProvider } from "./utils/providers/ToastProvider";
 import ClientProvider from "./utils/providers/ClientProvider";
 import * as serviceWorkers from "./serviceWorkerRegistration";
+import "../src/helper/localization/i18n";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Context } from "../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 function DropdownMenu({ items, handleTabClick }) {
-  const { settings } = useContext(Context);
-  const { language } = settings;
+  // const { settings } = useContext(Context);
+  // const { language } = settings;
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(
     items.find((item) => item.selected)
@@ -29,6 +30,8 @@ function DropdownMenu({ items, handleTabClick }) {
     setIsOpen(false);
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -39,9 +42,8 @@ function DropdownMenu({ items, handleTabClick }) {
       </button>
       {isOpen && (
         <div
-          className={`absolute z-40 mt-2 w-48 rounded-md shadow-lg bg-dark-200 ${
-            language === "fa" ? "right-0" : "left-0"
-          }`}
+          className={`absolute z-40 mt-2 w-48 rounded-md shadow-lg bg-dark-200
+          `}
         >
           <div
             className="py-1"
