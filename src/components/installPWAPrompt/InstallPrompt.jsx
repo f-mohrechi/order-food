@@ -1,13 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../context/AuthContext";
 import { PrimaryButton } from "../button";
-import Strings from "../../helper/localization/localization";
 import { useTranslation } from "react-i18next";
 
 export default function InstallPrompt() {
   const { installPrompt } = useContext(Context);
-  // const { language } = settings;
-
   const [show, setShow] = useState(true);
   const { t } = useTranslation();
 

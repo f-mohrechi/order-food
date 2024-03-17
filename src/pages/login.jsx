@@ -12,10 +12,13 @@ import Strings from "../helper/localization/localization";
 import { useFormik } from "formik";
 import registerSchema from "../helper/validation/registerValidation";
 import loginSchema from "../helper/validation/loginValidation";
+import { useTranslation } from "react-i18next";
 
 function Login() {
   const { dispatch } = useContext(Context);
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   // const usernameRef = useRef();
   // const passwordRef = useRef();
   // const [error, setError] = useState({});
@@ -75,19 +78,19 @@ function Login() {
           localStorage.setItem("token", data);
           localStorage.setItem("user", JSON.stringify(values));
           dispatch("user", values);
-          toastConfig.success(Strings.successLogin);
+          toastConfig.success(t("successLogin"));
           navigate("/");
         })
         .catch((error) => {
           if (error.response) {
             setErrors({ server: error.response.data });
-            toastConfig.error(`${Strings.error}: ${error.response.data}`);
+            toastConfig.error(`${t("error")}: ${error.response.data}`);
           } else if (error.request) {
             // Handle errors due to no response from the server
-            toastConfig.error(Strings.serverNoResponse);
+            toastConfig.error(t("serverNoResponse"));
           } else {
             // Handle other errors
-            toastConfig.error(Strings.error, error.message);
+            toastConfig.error(t("error"), error.message);
           }
         })
         .finally(() => {
@@ -101,7 +104,7 @@ function Login() {
     <div className="flex justify-center items-center h-screen px-5">
       <div className="flex flex-col items-center gap-4 p-10 bg-dark-200 rounded-lg shadow-lg w-[400px]">
         <div>
-          <Title title={Strings.login} text={Strings.welcomeBack} />
+          <Title title={t("login")} text={t("welcomeBack")} />
         </div>
         <form onSubmit={formik.handleSubmit} className="w-full">
           <div>
@@ -109,9 +112,9 @@ function Login() {
               value={formik.values.username}
               onChange={formik.handleChange}
               name="username"
-              label={Strings.username}
+              label={t("username")}
               type="text"
-              placeholder={Strings.username}
+              placeholder={t("username")}
               icon={<FiUser />}
               error={formik.errors["username"]}
               // ref={usernameRef}
@@ -122,20 +125,20 @@ function Login() {
               value={formik.values.password}
               onChange={formik.handleChange}
               name="password"
-              label={Strings.password}
+              label={t("password")}
               type="password"
-              placeholder={Strings.password}
+              placeholder={t("password")}
               icon={<FiLock />}
               error={formik.errors["password"]}
               // ref={passwordRef}
             />
           </div>
           <div className="mt-14 flex justify-center">
-            <PrimaryButton type={"submit"} text={Strings.login} />
+            <PrimaryButton type={"submit"} text={t("login")} />
           </div>
 
           <div className="mt-8">
-            <TextLink text={Strings.noAccount} link={"/register"} />
+            <TextLink text={t("noAccount")} link={"/register"} />
           </div>
         </form>
       </div>
