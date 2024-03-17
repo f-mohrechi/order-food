@@ -6,17 +6,10 @@ import { useTranslation } from "react-i18next";
 
 export default function ChangeLanguage() {
   const changeLanguage = (lng) => {
-    // Set language in i18n
     i18n.changeLanguage(lng);
-
-    // Get direction based on language
     const direction = i18n.dir(lng);
-
-    // Set language and direction in localStorage
     localStorage.setItem("language", lng);
     localStorage.setItem("direction", direction);
-
-    // Set document direction
     document.documentElement.dir = direction;
   };
 

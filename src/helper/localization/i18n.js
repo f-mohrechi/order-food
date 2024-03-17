@@ -5,6 +5,7 @@ import en from "../../assets/locales/en.json";
 import fa from "../../assets/locales/fa.json";
 
 const selectedLanguage = localStorage.getItem("language") || "en";
+const selectedDirection = localStorage.getItem("direction") || "ltr"; // Default direction
 
 i18n
   .use(LanguageDetector)
@@ -19,7 +20,7 @@ i18n
       },
     },
     fallbackLng: "en",
-    lng: selectedLanguage, // Use saved language or default to 'en'
+    lng: selectedLanguage,
     detection: {
       order: ["localStorage", "navigator"],
       caches: ["localStorage"],
@@ -28,5 +29,8 @@ i18n
       escapeValue: false,
     },
   });
+
+// Set document direction
+document.documentElement.dir = selectedDirection;
 
 export default i18n;
