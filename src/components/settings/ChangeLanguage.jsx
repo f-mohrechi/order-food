@@ -1,5 +1,4 @@
 import React from "react";
-import Strings from "../../helper/localization/localization";
 import { PrimaryButton } from "../button";
 import i18n from "../../helper/localization/i18n";
 import { useTranslation } from "react-i18next";
@@ -14,8 +13,6 @@ export default function ChangeLanguage() {
   };
 
   const { t } = useTranslation();
-
-  console.log(Strings.getLanguage(), "settings");
   return (
     <div>
       <div>

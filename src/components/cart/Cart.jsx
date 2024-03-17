@@ -1,20 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import { PrimaryButton } from "../button";
 import WithAuth from "../../helper/auth/WithAuth";
-import Strings from "../../helper/localization/localization";
-import { Context } from "../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const Cart = () => {
-  const { settings } = useContext(Context);
-  const { language } = settings;
   const cart = useSelector((state) => state.cart);
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
 
+  const { t } = useTranslation();
+  const language = localStorage.getItem("language");
   return (
     <div
       className={`bg-dark-200 py-6 rounded-2xl h-[93vh] ${
@@ -25,7 +24,7 @@ const Cart = () => {
         <div className=" flex flex-col justify-between h-full">
           <div className="h-full flex-1">
             <div>
-              <p className="text-xl font-semibold">{Strings.orders}</p>
+              <p className="text-xl font-semibold">{t("orders")}</p>
             </div>
 
             <div
@@ -34,18 +33,18 @@ const Cart = () => {
               }`}
             >
               <div className="col-span-3">
-                <p className="font-semibold">{Strings.item}</p>
+                <p className="font-semibold">{t("item")}</p>
               </div>
 
               <div>
-                <p className="font-semibold text-center">{Strings.number}</p>
+                <p className="font-semibold text-center">{t("number")}</p>
               </div>
 
               <div>
-                <p className="font-semibold text-end">{Strings.price}</p>
+                <p className="font-semibold text-end">{t("price")}</p>
               </div>
               <div>
-                <p className="font-semibold text-end">{Strings.action}</p>
+                <p className="font-semibold text-end">{t("action")}</p>
               </div>
             </div>
 
@@ -70,18 +69,18 @@ const Cart = () => {
             }`}
           >
             <div className="flex justify-between w-full pt-3">
-              <p className="text-sm text-gray-50">{Strings.subTotal}</p>
+              <p className="text-sm text-gray-50">{t("subTotal")}</p>
               <p>$ {totalPrice.toFixed(2)}</p>
             </div>
 
             <div className="flex justify-center mt-4">
-              <PrimaryButton type={"button"} text={Strings.continuePayment} />
+              <PrimaryButton type={"button"} text={t("continuePayment")} />
             </div>
           </div>
         </div>
       ) : (
         <div className="text-lg font-bold flex items-center h-full justify-center">
-          <p>{Strings.emptyCart}</p>
+          <p>{t("emptyCart")}</p>
         </div>
       )}
     </div>

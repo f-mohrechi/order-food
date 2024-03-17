@@ -29,8 +29,6 @@ i18n
       escapeValue: false,
     },
   });
-
-// Set document direction
 document.documentElement.dir = selectedDirection;
 
 export default i18n;
